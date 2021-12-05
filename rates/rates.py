@@ -11,10 +11,12 @@ import config
 def get_db_conn(db_config):
     """ Create a database connection. """
     return psycopg2.connect(
-        "dbname='{}' user='{}' host='{}'".format(
+        "dbname='{}' user='{}' host='{}' password='{}' port='{}'".format(
             db_config["name"],
             db_config["user"],
-            db_config["host"]
+            db_config["host"],
+            db_config["password"],
+            db_config["port"]
         )
     )
 

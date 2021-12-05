@@ -25,6 +25,8 @@ SET default_table_access_method = heap;
 -- Name: ports; Type: TABLE; Schema: public; Owner: -
 --
 
+CREATE DATABASE rates;
+
 CREATE TABLE public.ports (
     code text NOT NULL,
     name text NOT NULL,
