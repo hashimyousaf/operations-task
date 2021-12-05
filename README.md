@@ -145,17 +145,17 @@ Provide a high-level diagram, along with a few paragraphs describing the choices
 ![Test Image 1](Core.png)
 
 
-#####1. AutoSacling Group:
+##### 1. AutoSacling Group:
 We will be cotrolling autoscaling at instance level using Autoscaling group.
 
-#####2. HPA(Horizontal Pod Autoscaler):
+##### 2. HPA(Horizontal Pod Autoscaler):
 POD Level autoscaling can be controlled by HPA setting on 60% of Mem and CPU which can be 
 monitored configurng metrics server in kubernetes kube-system namespace. kube-system NS will
 make it available to all other namespaces if we are usnig different namespaces for every 
 different environment.
 
 
-#####3. Monitoring
+##### 3. Monitoring
 * We can setup an alert on maximum # node count set for our Auto scaling group.
   * So that we can increase the limit in case we reach to the max node limit unexectedly.
 * We can setup monitoring alerts on our containers using  Newrelic whenever it fails to start more than 10 times in 5 minute.
@@ -200,10 +200,11 @@ smaller batch and it will increase our speed.
         * prod_base_infra_params.yaml
 
 
-######Which parts of the system are the bottlenecks or problems that might make it incompatible with the new requirements?
+
+###### Which parts of the system are the bottlenecks or problems that might make it incompatible with the new requirements?
 
 To handle Bigger batch with the atomicity(ACID property) on batch level can be hard to achieve. And specially with Multithreading solution it can be way much harder than the single threaded solution.
 
-######My Remedy
+###### My Remedy
 I would introduce Spark to handle Bigger batch(having tens of thousands of records) using transactional writes of Spark. 
 Reference: https://andriymz.github.io/spark/transactional-writes-in-spark/#transactional-writes
